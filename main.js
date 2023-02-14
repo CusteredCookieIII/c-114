@@ -1,4 +1,12 @@
+eyeX=0;
+eyeY=0;
+
+noseX=0;
+noseY=0;
+
 function preload(){
+    eye=loadImage('https://i.postimg.cc/brNSW45Z/360-F-546888653-wx-NOVc-QXt-YXEp-Ad4-OKik-M9-Q0-Pz4-Jq-RDs-removebg-preview.png')
+    nose=loadImage('https://i.postimg.cc/Wz3tXgDr/top-hat-png-clipart-picture-5a3c3582a57025-0281146015138952986776-removebg-preview.png')
 }
 
 function setup(){
@@ -17,6 +25,10 @@ function modelLoaded(){
 }
 function draw() {
     image(video, 0 , 0, 300,300);
+    image(nose, noseX-12, noseY-12, 30, 30);
+    image(eye, eyeX-12, eyeY-12, 30, 30);
+    
+    
 }
 
 function take_snapshot(){
@@ -27,7 +39,13 @@ function gotPoses(results){
     if(results.length> 0)
     {
         console.log(results);
-        console.log("nose x = " + results[0].pose.nose.x);
-        console.log("nose x = " + results[0].pose.nose.y);
+        eyeX = results[0].pose.Lefteye.x;
+        eyeY = results[0].pose.Lefteye.y;
+        console.log("eye x = " + eyeX);
+        console.log("eye x = " + eyeY);
+        noseX = results[0].pose.nose.x;
+        noseY = results[0].pose.nose.y;
+        console.log("nose x = " + noseX);
+        console.log("nose x = " + noseY);
     }
 }
